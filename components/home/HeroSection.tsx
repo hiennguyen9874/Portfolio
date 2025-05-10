@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FileDown } from 'lucide-react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import Script from 'next/script';
 
 import { personalInfo } from '@/config/personal-info';
@@ -77,6 +79,15 @@ const HeroSection = () => {
                 >
                   Contact Me
                 </a>
+                <Link
+                  href="/cv"
+                  className="px-6 py-3 border border-blue-700 bg-transparent hover:bg-blue-700/20 text-white font-medium rounded-lg transition duration-300 flex items-center gap-2"
+                  aria-label="Download my resume"
+                  role="button"
+                >
+                  <FileDown className="h-5 w-5" aria-hidden="true" />
+                  Resume
+                </Link>
                 <a
                   href="#skills"
                   className="px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300 flex items-center gap-2"

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import Link from 'next/link';
+
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Skills', href: '#skills' },
@@ -60,6 +62,12 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <Link
+              href="/cv"
+              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition font-bold"
+            >
+              Resume
+            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -94,6 +102,13 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
+          <Link
+            href="/cv"
+            className="block px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
+            onClick={handleNavLinkClick}
+          >
+            Resume
+          </Link>
         </div>
       </div>
     </nav>

@@ -5,7 +5,7 @@ const ExperienceSection = () => {
     <div className="max-w-3xl mx-auto">
       {personalInfo.experience.map((exp, index) => (
         <div key={index} className="relative pl-12 pb-12 timeline-item">
-          <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+          <div className="absolute left-2 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
             <i className="fas fa-briefcase text-white text-sm"></i>
           </div>
           <div className="bg-gray-800 rounded-xl p-6">

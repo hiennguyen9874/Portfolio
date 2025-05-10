@@ -1,12 +1,16 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { personalInfo } from '@/config/personal-info';
 
 import BlogCard from './BlogCard';
 
 const BlogSection = () => {
+  const router = useRouter();
+
   const handleViewAllArticles = () => {
-    console.log('View all articles');
+    router.push('/blog');
   };
 
   return (

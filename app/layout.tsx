@@ -2,7 +2,6 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 
 import ScrollProgress from '@/components/navigation/ScrollProgress';
 import { personalInfo } from '@/config/personal-info';
@@ -98,7 +97,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>

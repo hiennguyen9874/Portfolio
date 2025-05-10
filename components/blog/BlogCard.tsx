@@ -2,6 +2,10 @@
 
 import React, { ReactNode } from 'react';
 
+import { useRouter } from 'next/navigation';
+
+import { slugify } from '@/lib/utils';
+
 type BlogCardProps = {
   category: string;
   date: string;
@@ -21,8 +25,10 @@ const BlogCard = ({
   icon,
   accentColor,
 }: BlogCardProps) => {
+  const router = useRouter();
+
   const handleReadArticle = () => {
-    console.log(`Read article: ${title}`);
+    router.push(`/blog/${slugify(title)}`);
   };
 
   return (

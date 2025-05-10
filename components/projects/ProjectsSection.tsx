@@ -8,7 +8,7 @@ import ProjectCard from './ProjectCard';
 
 const ProjectsSection = () => {
   const handleViewAllProjects = () => {
-    console.log('View all projects on GitHub');
+    window.open(personalInfo.contact.social.github.url, '_blank');
   };
 
   return (
