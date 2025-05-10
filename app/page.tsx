@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import Navbar from '@/components/navigation/Navbar';
-import HeroSection from '@/components/home/HeroSection';
-import SkillsSection from '@/components/skills/SkillsSection';
-import ProjectsSection from '@/components/projects/ProjectsSection';
-import ExperienceSection from '@/components/experience/ExperienceSection';
+import { motion } from 'framer-motion';
+
 import BlogSection from '@/components/blog/BlogSection';
 import ContactSection from '@/components/contact/ContactSection';
-import Footer from '@/components/ui/Footer';
+import ExperienceSection from '@/components/experience/ExperienceSection';
+import HeroSection from '@/components/home/HeroSection';
+import Navbar from '@/components/navigation/Navbar';
+import ProjectsSection from '@/components/projects/ProjectsSection';
+import SkillsSection from '@/components/skills/SkillsSection';
 import AnimatedSection from '@/components/ui/AnimatedSection';
+import Footer from '@/components/ui/Footer';
 import ParallaxScroll from '@/components/ui/ParallaxScroll';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -27,14 +28,14 @@ export default function Home() {
           <div className="absolute bottom-[30%] right-[15%] w-80 h-80 rounded-full bg-cyan-500/5 blur-3xl" />
         </ParallaxScroll>
       </div>
-      
+
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
-        
+
         {/* Skills Section */}
-        <motion.section 
-          id="skills" 
+        <motion.section
+          id="skills"
           className="py-16 relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -42,25 +43,28 @@ export default function Home() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-4 section-title inline-block">Technical Skills</h2>
+              <h2 className="text-3xl font-bold mb-4 section-title inline-block">
+                Technical Skills
+              </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Expertise across backend development, DevOps automation, and deep learning implementations.
+                Expertise across backend development, DevOps automation, and deep learning
+                implementations.
               </p>
             </motion.div>
             <SkillsSection />
           </div>
         </motion.section>
-        
+
         {/* Projects Section */}
-        <motion.section 
-          id="projects" 
+        <motion.section
+          id="projects"
           className="py-16 relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -68,14 +72,16 @@ export default function Home() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-4 section-title inline-block">Featured Projects</h2>
+              <h2 className="text-3xl font-bold mb-4 section-title inline-block">
+                Featured Projects
+              </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 Real-world applications demonstrating technical expertise across multiple domains.
               </p>
@@ -83,34 +89,34 @@ export default function Home() {
             <ProjectsSection />
           </div>
         </motion.section>
-        
-        <AnimatedSection 
+
+        <AnimatedSection
           id="experience"
-          hasParallaxBackground 
+          hasParallaxBackground
           title="Professional Experience"
           subtitle="Track record of success across diverse engineering environments."
         >
           <ExperienceSection />
         </AnimatedSection>
-        
-        <AnimatedSection 
+
+        <AnimatedSection
           id="blog"
-          hasParallaxBackground 
+          hasParallaxBackground
           title="Technical Blog"
           subtitle="Thoughts and insights on software engineering, DevOps, and machine learning."
         >
           <BlogSection />
         </AnimatedSection>
-        
-        <AnimatedSection 
+
+        <AnimatedSection
           id="contact"
-          hasParallaxBackground 
+          hasParallaxBackground
           title="Get In Touch"
           subtitle="Interested in working together? Let's discuss your project requirements."
         >
           <ContactSection />
         </AnimatedSection>
-        
+
         <Footer />
       </div>
     </main>

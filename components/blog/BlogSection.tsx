@@ -1,4 +1,6 @@
-"use client";
+'use client';
+
+import { ReactNode } from 'react';
 
 import BlogCard from './BlogCard';
 
@@ -8,7 +10,7 @@ type Blog = {
   title: string;
   description: string;
   bgColor: string;
-  icon: JSX.Element;
+  icon: ReactNode;
   accentColor: string;
 };
 
@@ -18,10 +20,11 @@ const BlogSection = () => {
       category: 'Backend Development',
       date: 'Jun 2023',
       title: 'Designing High-Performance APIs in Go',
-      description: 'Architectural patterns and optimization techniques for building low-latency APIs.',
+      description:
+        'Architectural patterns and optimization techniques for building low-latency APIs.',
       bgColor: 'bg-gradient-to-r from-blue-600 to-indigo-600',
       icon: <i className="fas fa-book-open text-white text-6xl"></i>,
-      accentColor: 'text-blue-500'
+      accentColor: 'text-blue-500',
     },
     {
       category: 'DevOps',
@@ -30,7 +33,7 @@ const BlogSection = () => {
       description: 'Strategies for managing multiple Kubernetes clusters with GitOps workflows.',
       bgColor: 'bg-gradient-to-r from-purple-600 to-pink-600',
       icon: <i className="fas fa-cloud text-white text-6xl"></i>,
-      accentColor: 'text-purple-500'
+      accentColor: 'text-purple-500',
     },
     {
       category: 'Deep Learning',
@@ -39,8 +42,8 @@ const BlogSection = () => {
       description: 'Techniques for reducing latency and memory usage in deep learning models.',
       bgColor: 'bg-gradient-to-r from-green-600 to-teal-600',
       icon: <i className="fas fa-brain text-white text-6xl"></i>,
-      accentColor: 'text-green-500'
-    }
+      accentColor: 'text-green-500',
+    },
   ];
 
   const handleViewAllArticles = () => {
@@ -64,9 +67,9 @@ const BlogSection = () => {
             />
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
-          <button 
+          <button
             className="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300"
             onClick={handleViewAllArticles}
             tabIndex={0}
@@ -81,4 +84,4 @@ const BlogSection = () => {
   );
 };
 
-export default BlogSection; 
+export default BlogSection;

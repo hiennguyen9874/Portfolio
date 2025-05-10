@@ -19,8 +19,8 @@ const ExperienceSection = () => {
         'Architected and implemented a distributed event processing system handling 50K+ events/sec',
         'Led migration from monolithic to microservices architecture, reducing deployment times by 70%',
         'Implemented Kubernetes-based CI/CD pipelines reducing production incidents by 60%',
-        'Mentored 3 junior developers, improving team velocity by 40%'
-      ]
+        'Mentored 3 junior developers, improving team velocity by 40%',
+      ],
     },
     {
       title: 'Software Engineer',
@@ -31,8 +31,8 @@ const ExperienceSection = () => {
         'Built real-time data processing pipelines using Python, Kafka, and Spark',
         'Designed and implemented a computer vision system reducing defect detection time by 90%',
         'Containerized ML models using Docker and deployed with Kubernetes',
-        'Automated infrastructure provisioning with Terraform, reducing setup time by 80%'
-      ]
+        'Automated infrastructure provisioning with Terraform, reducing setup time by 80%',
+      ],
     },
     {
       title: 'Junior Developer',
@@ -43,9 +43,9 @@ const ExperienceSection = () => {
         'Developed REST APIs and backend services for web applications',
         'Implemented automated testing framework reducing bugs by 50%',
         'Optimized database queries improving response times by 40%',
-        'Assisted in migration to cloud infrastructure (AWS)'
-      ]
-    }
+        'Assisted in migration to cloud infrastructure (AWS)',
+      ],
+    },
   ];
 
   return (
@@ -69,4 +69,4 @@ const ExperienceSection = () => {
   );
 };
 
-export default ExperienceSection; 
+export default ExperienceSection;

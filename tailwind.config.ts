@@ -9,27 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'dark': '#0f172a',
-        'light': '#f8fafc',
-        'primary': '#3b82f6',
+        dark: '#0f172a',
+        light: '#f8fafc',
+        primary: '#3b82f6',
         'primary-dark': '#2563eb',
-        'gray': {
+        gray: {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
         },
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'fadeIn': 'fadeIn 1s ease-in-out',
-        'slideUp': 'slideUp 0.6s ease-out',
-        'slideDown': 'slideDown 0.6s ease-out',
-        'slideLeft': 'slideLeft 0.6s ease-out',
-        'slideRight': 'slideRight 0.6s ease-out',
-        'bounce': 'bounce 1s infinite',
+        float: 'float 6s ease-in-out infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        fadeIn: 'fadeIn 1s ease-in-out',
+        slideUp: 'slideUp 0.6s ease-out',
+        slideDown: 'slideDown 0.6s ease-out',
+        slideLeft: 'slideLeft 0.6s ease-out',
+        slideRight: 'slideRight 0.6s ease-out',
+        bounce: 'bounce 1s infinite',
         'spin-slow': 'spin 6s linear infinite',
-        'wiggle': 'wiggle 1s ease-in-out infinite',
+        wiggle: 'wiggle 1s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -75,10 +75,10 @@ const config: Config = {
       transitionDuration: {
         '2000': '2000ms',
         '3000': '3000ms',
-      }
+      },
     },
   },
   plugins: [],
 };
 
-export default config; 
+export default config;

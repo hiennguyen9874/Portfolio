@@ -1,13 +1,16 @@
-"use client";
+'use client';
+
+import { motion } from 'framer-motion';
+
+import { ReactNode } from 'react';
 
 import ProjectCard from './ProjectCard';
-import { motion } from 'framer-motion';
 
 type Project = {
   title: string;
   description: string;
   bgColor: string;
-  icon: JSX.Element;
+  icon: ReactNode;
   tags: { name: string; color: string }[];
 };
 
@@ -15,7 +18,8 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       title: 'Distributed Event Processing',
-      description: 'High-throughput event processing system using Kafka, Go, and Kubernetes handling 50K+ events/sec.',
+      description:
+        'High-throughput event processing system using Kafka, Go, and Kubernetes handling 50K+ events/sec.',
       bgColor: 'bg-gradient-to-r from-blue-600 to-purple-600',
       icon: <i className="fas fa-server text-white text-6xl"></i>,
       tags: [
@@ -23,11 +27,12 @@ const ProjectsSection = () => {
         { name: 'Kafka', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'Kubernetes', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'PostgreSQL', color: 'bg-blue-900/20 text-blue-400' },
-      ]
+      ],
     },
     {
       title: 'Infrastructure as Code Pipeline',
-      description: 'Automated cloud infrastructure provisioning with Terraform, GitHub Actions, and AWS.',
+      description:
+        'Automated cloud infrastructure provisioning with Terraform, GitHub Actions, and AWS.',
       bgColor: 'bg-gradient-to-r from-purple-600 to-indigo-600',
       icon: <i className="fas fa-code-branch text-white text-6xl"></i>,
       tags: [
@@ -35,11 +40,12 @@ const ProjectsSection = () => {
         { name: 'AWS', color: 'bg-purple-900/20 text-purple-400' },
         { name: 'GitHub Actions', color: 'bg-purple-900/20 text-purple-400' },
         { name: 'Docker', color: 'bg-purple-900/20 text-purple-400' },
-      ]
+      ],
     },
     {
       title: 'Real-time Object Detection',
-      description: 'Computer vision system for industrial quality control using PyTorch and ONNX runtime.',
+      description:
+        'Computer vision system for industrial quality control using PyTorch and ONNX runtime.',
       bgColor: 'bg-gradient-to-r from-green-600 to-teal-600',
       icon: <i className="fas fa-brain text-white text-6xl"></i>,
       tags: [
@@ -47,7 +53,7 @@ const ProjectsSection = () => {
         { name: 'ONNX', color: 'bg-green-900/20 text-green-400' },
         { name: 'FastAPI', color: 'bg-green-900/20 text-green-400' },
         { name: 'Docker', color: 'bg-green-900/20 text-green-400' },
-      ]
+      ],
     },
     {
       title: 'Scalable Analytics Backend',
@@ -59,11 +65,12 @@ const ProjectsSection = () => {
         { name: 'ClickHouse', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'Redis', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'Kubernetes', color: 'bg-blue-900/20 text-blue-400' },
-      ]
+      ],
     },
     {
       title: 'NLP Text Classification',
-      description: 'Transformer-based model for document classification deployed as a microservice.',
+      description:
+        'Transformer-based model for document classification deployed as a microservice.',
       bgColor: 'bg-gradient-to-r from-teal-600 to-green-600',
       icon: <i className="fas fa-robot text-white text-6xl"></i>,
       tags: [
@@ -71,7 +78,7 @@ const ProjectsSection = () => {
         { name: 'Transformers', color: 'bg-green-900/20 text-green-400' },
         { name: 'FastAPI', color: 'bg-green-900/20 text-green-400' },
         { name: 'Docker', color: 'bg-green-900/20 text-green-400' },
-      ]
+      ],
     },
     {
       title: 'Microservices Orchestration',
@@ -83,7 +90,7 @@ const ProjectsSection = () => {
         { name: 'gRPC', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'Kubernetes', color: 'bg-blue-900/20 text-blue-400' },
         { name: 'Istio', color: 'bg-blue-900/20 text-blue-400' },
-      ]
+      ],
     },
   ];
 
@@ -93,7 +100,7 @@ const ProjectsSection = () => {
 
   return (
     <>
-      <motion.div 
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -116,14 +123,14 @@ const ProjectsSection = () => {
           </motion.div>
         ))}
       </motion.div>
-      
+
       <motion.div
         className="text-center mt-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       >
-        <button 
+        <button
           className="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300"
           onClick={handleViewAllProjects}
           aria-label="View all projects on GitHub"
@@ -137,4 +144,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection; 
+export default ProjectsSection;

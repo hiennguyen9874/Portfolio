@@ -1,7 +1,8 @@
-"use client";
+'use client';
+
+import { motion } from 'framer-motion';
 
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 
 interface AnimationItemProps {
   children: ReactNode;
@@ -13,77 +14,73 @@ interface AnimationItemProps {
 const variants = {
   fadeIn: {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         type: 'tween',
-        ease: 'easeOut'
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   },
   slideUp: {
     hidden: { opacity: 0, y: 40 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         type: 'tween',
-        ease: 'easeOut'
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   },
   slideLeft: {
     hidden: { opacity: 0, x: 40 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       x: 0,
       transition: {
         type: 'tween',
-        ease: 'easeOut'
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   },
   slideRight: {
     hidden: { opacity: 0, x: -40 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       x: 0,
       transition: {
         type: 'tween',
-        ease: 'easeOut'
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   },
   scale: {
     hidden: { opacity: 0, scale: 0.8 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       scale: 1,
       transition: {
         type: 'spring',
         stiffness: 200,
-        damping: 20
-      }
-    }
-  }
+        damping: 20,
+      },
+    },
+  },
 };
 
 const AnimationItem = ({
   children,
   className = '',
   variant = 'fadeIn',
-  custom = 0
+  custom = 0,
 }: AnimationItemProps) => {
   return (
-    <motion.div
-      variants={variants[variant]}
-      className={className}
-      custom={custom}
-    >
+    <motion.div variants={variants[variant]} className={className} custom={custom}>
       {children}
     </motion.div>
   );
 };
 
-export default AnimationItem; 
+export default AnimationItem;

@@ -1,751 +1,1028 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Senior Software Developer | Backend, DevOps & Deep Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --gray: #64748b;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--dark);
+        color: var(--light);
+        scroll-behavior: smooth;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+      }
+
+      .project-card {
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+      }
+
+      .timeline-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 24px;
+        top: 32px;
+        height: calc(100% - 32px);
+        width: 2px;
+        background: var(--gray);
+      }
+
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
         }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            scroll-behavior: smooth;
+        50% {
+          transform: translateY(-15px);
         }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        100% {
+          transform: translateY(0px);
         }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
-        }
-        
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 32px;
-            height: calc(100% - 32px);
-            width: 2px;
-            background: var(--gray);
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            margin-top: 8px;
-            border-radius: 2px;
-        }
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        margin-top: 8px;
+        border-radius: 2px;
+      }
     </style>
-</head>
-<body class="antialiased">
+  </head>
+  <body class="antialiased">
     <!-- Navigation -->
     <nav class="fixed w-full bg-dark/90 backdrop-blur-sm z-50 border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold gradient-text">DEV</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
-                    <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
-                    <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
-                    <a href="#experience" class="text-gray-300 hover:text-white transition">Experience</a>
-                    <a href="#blog" class="text-gray-300 hover:text-white transition">Blog</a>
-                    <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <span class="text-xl font-bold gradient-text">DEV</span>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+            <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+            <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
+            <a href="#experience" class="text-gray-300 hover:text-white transition">Experience</a>
+            <a href="#blog" class="text-gray-300 hover:text-white transition">Blog</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+          </div>
+          <div class="md:hidden flex items-center">
+            <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-dark border-t border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Home</a>
-                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Skills</a>
-                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Projects</a>
-                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Experience</a>
-                <a href="#blog" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Blog</a>
-                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Contact</a>
-            </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-dark border-t border-gray-800">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#home"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Home</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Experience</a
+          >
+          <a
+            href="#blog"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Blog</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md"
+            >Contact</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                        <span class="gradient-text">Senior Software Developer</span>
-                    </h1>
-                    <p class="text-xl text-gray-300 mb-8 max-w-lg">
-                        Architecting scalable backend systems, automating infrastructure, and implementing deep learning solutions to solve complex problems.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300">
-                            Contact Me
-                        </a>
-                        <a href="#" class="px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300 flex items-center gap-2">
-                            <i class="fas fa-download"></i> Download CV
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-64 h-64 md:w-80 md:h-80">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-xl opacity-20 animate-pulse"></div>
-                        <div class="relative w-full h-full flex items-center justify-center">
-                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
-                                 alt="Developer" 
-                                 class="rounded-full w-56 h-56 md:w-72 md:h-72 object-cover border-4 border-gray-800 shadow-xl animate-float">
-                        </div>
-                    </div>
-                </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+              <span class="gradient-text">Senior Software Developer</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-lg">
+              Architecting scalable backend systems, automating infrastructure, and implementing
+              deep learning solutions to solve complex problems.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300"
+              >
+                Contact Me
+              </a>
+              <a
+                href="#"
+                class="px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300 flex items-center gap-2"
+              >
+                <i class="fas fa-download"></i> Download CV
+              </a>
             </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative w-64 h-64 md:w-80 md:h-80">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-xl opacity-20 animate-pulse"
+              ></div>
+              <div class="relative w-full h-full flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                  alt="Developer"
+                  class="rounded-full w-56 h-56 md:w-72 md:h-72 object-cover border-4 border-gray-800 shadow-xl animate-float"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-gray-900/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 section-title inline-block">Technical Skills</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Expertise across backend development, DevOps automation, and deep learning implementations.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Backend Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-server text-blue-500"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">Backend Development</h3>
-                    </div>
-                    <p class="text-gray-400 mb-6">
-                        Building high-performance, scalable backend systems and APIs.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Python</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Go</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Node.js</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Kafka</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">REST APIs</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">gRPC</span>
-                        <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Redis</span>
-                    </div>
-                </div>
-                
-                <!-- DevOps Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-cloud text-purple-500"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">DevOps & Cloud</h3>
-                    </div>
-                    <p class="text-gray-400 mb-6">
-                        Infrastructure as code, CI/CD pipelines, and cloud architecture.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">Docker</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">Kubernetes</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">Terraform</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">CI/CD</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">AWS</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">GitHub Actions</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">Prometheus</span>
-                        <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm">Grafana</span>
-                    </div>
-                </div>
-                
-                <!-- Deep Learning Skills -->
-                <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-brain text-green-500"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">Deep Learning</h3>
-                    </div>
-                    <p class="text-gray-400 mb-6">
-                        Implementing and deploying machine learning models at scale.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">PyTorch</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">TensorFlow</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">MLOps</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">Computer Vision</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">NLP</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">Transformers</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">ONNX</span>
-                        <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">MLflow</span>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 section-title inline-block">Technical Skills</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Expertise across backend development, DevOps automation, and deep learning
+            implementations.
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Backend Skills -->
+          <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-server text-blue-500"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Backend Development</h3>
+            </div>
+            <p class="text-gray-400 mb-6">
+              Building high-performance, scalable backend systems and APIs.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm"
+                >Python</span
+              >
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Go</span>
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm"
+                >Node.js</span
+              >
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm"
+                >PostgreSQL</span
+              >
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Kafka</span>
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm"
+                >REST APIs</span
+              >
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">gRPC</span>
+              <span class="px-3 py-1 bg-blue-900/20 text-blue-400 rounded-full text-sm">Redis</span>
+            </div>
+          </div>
+
+          <!-- DevOps Skills -->
+          <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-cloud text-purple-500"></i>
+              </div>
+              <h3 class="text-xl font-semibold">DevOps & Cloud</h3>
+            </div>
+            <p class="text-gray-400 mb-6">
+              Infrastructure as code, CI/CD pipelines, and cloud architecture.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >Docker</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >Kubernetes</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >Terraform</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >CI/CD</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >AWS</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >GitHub Actions</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >Prometheus</span
+              >
+              <span class="px-3 py-1 bg-purple-900/20 text-purple-400 rounded-full text-sm"
+                >Grafana</span
+              >
+            </div>
+          </div>
+
+          <!-- Deep Learning Skills -->
+          <div class="bg-gray-800 rounded-xl p-6 skill-card transition duration-300">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-brain text-green-500"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Deep Learning</h3>
+            </div>
+            <p class="text-gray-400 mb-6">
+              Implementing and deploying machine learning models at scale.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >PyTorch</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >TensorFlow</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >MLOps</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >Computer Vision</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm">NLP</span>
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >Transformers</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >ONNX</span
+              >
+              <span class="px-3 py-1 bg-green-900/20 text-green-400 rounded-full text-sm"
+                >MLflow</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 section-title inline-block">Featured Projects</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Real-world applications demonstrating technical expertise across multiple domains.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                        <i class="fas fa-server text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Distributed Event Processing</h3>
-                        <p class="text-gray-400 mb-4">
-                            High-throughput event processing system using Kafka, Go, and Kubernetes handling 50K+ events/sec.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Go</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Kafka</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">PostgreSQL</span>
-                        </div>
-                        <a href="#" class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
-                        <i class="fas fa-code-branch text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Infrastructure as Code Pipeline</h3>
-                        <p class="text-gray-400 mb-4">
-                            Automated cloud infrastructure provisioning with Terraform, GitHub Actions, and AWS.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs">Terraform</span>
-                            <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs">AWS</span>
-                            <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs">GitHub Actions</span>
-                            <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs">Docker</span>
-                        </div>
-                        <a href="#" class="text-purple-500 hover:text-purple-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center">
-                        <i class="fas fa-brain text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Real-time Object Detection</h3>
-                        <p class="text-gray-400 mb-4">
-                            Computer vision system for industrial quality control using PyTorch and ONNX runtime.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">ONNX</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">FastAPI</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">Docker</span>
-                        </div>
-                        <a href="#" class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-indigo-600 to-blue-600 flex items-center justify-center">
-                        <i class="fas fa-database text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Scalable Analytics Backend</h3>
-                        <p class="text-gray-400 mb-4">
-                            Time-series data processing pipeline with Python, ClickHouse, and Redis.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">ClickHouse</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Redis</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Kubernetes</span>
-                        </div>
-                        <a href="#" class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-teal-600 to-green-600 flex items-center justify-center">
-                        <i class="fas fa-robot text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">NLP Text Classification</h3>
-                        <p class="text-gray-400 mb-4">
-                            Transformer-based model for document classification deployed as a microservice.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">Transformers</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">FastAPI</span>
-                            <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs">Docker</span>
-                        </div>
-                        <a href="#" class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
-                        <i class="fas fa-project-diagram text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Microservices Orchestration</h3>
-                        <p class="text-gray-400 mb-4">
-                            Event-driven architecture with gRPC, Kubernetes, and service mesh.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Go</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">gRPC</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Istio</span>
-                        </div>
-                        <a href="#" class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300">
-                    <i class="fab fa-github mr-2"></i> View All Projects on GitHub
-                </a>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 section-title inline-block">Featured Projects</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Real-world applications demonstrating technical expertise across multiple domains.
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center"
+            >
+              <i class="fas fa-server text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Distributed Event Processing</h3>
+              <p class="text-gray-400 mb-4">
+                High-throughput event processing system using Kafka, Go, and Kubernetes handling
+                50K+ events/sec.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Go</span>
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Kafka</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Kubernetes</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >PostgreSQL</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center"
+            >
+              <i class="fas fa-code-branch text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Infrastructure as Code Pipeline</h3>
+              <p class="text-gray-400 mb-4">
+                Automated cloud infrastructure provisioning with Terraform, GitHub Actions, and AWS.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs"
+                  >Terraform</span
+                >
+                <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs"
+                  >AWS</span
+                >
+                <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs"
+                  >GitHub Actions</span
+                >
+                <span class="px-2 py-1 bg-purple-900/20 text-purple-400 rounded-full text-xs"
+                  >Docker</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-purple-500 hover:text-purple-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center"
+            >
+              <i class="fas fa-brain text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Real-time Object Detection</h3>
+              <p class="text-gray-400 mb-4">
+                Computer vision system for industrial quality control using PyTorch and ONNX
+                runtime.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >PyTorch</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >ONNX</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >FastAPI</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >Docker</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-indigo-600 to-blue-600 flex items-center justify-center"
+            >
+              <i class="fas fa-database text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Scalable Analytics Backend</h3>
+              <p class="text-gray-400 mb-4">
+                Time-series data processing pipeline with Python, ClickHouse, and Redis.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Python</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >ClickHouse</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Redis</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Kubernetes</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-teal-600 to-green-600 flex items-center justify-center"
+            >
+              <i class="fas fa-robot text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">NLP Text Classification</h3>
+              <p class="text-gray-400 mb-4">
+                Transformer-based model for document classification deployed as a microservice.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >PyTorch</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >Transformers</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >FastAPI</span
+                >
+                <span class="px-2 py-1 bg-green-900/20 text-green-400 rounded-full text-xs"
+                  >Docker</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center"
+            >
+              <i class="fas fa-project-diagram text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Microservices Orchestration</h3>
+              <p class="text-gray-400 mb-4">
+                Event-driven architecture with gRPC, Kubernetes, and service mesh.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs">Go</span>
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >gRPC</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Kubernetes</span
+                >
+                <span class="px-2 py-1 bg-blue-900/20 text-blue-400 rounded-full text-xs"
+                  >Istio</span
+                >
+              </div>
+              <a
+                href="#"
+                class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center"
+              >
+                View Details <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300"
+          >
+            <i class="fab fa-github mr-2"></i> View All Projects on GitHub
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Work Experience -->
     <section id="experience" class="py-20 bg-gray-900/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 section-title inline-block">Work Experience</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Professional journey with a track record of delivering impactful solutions.
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto">
-                <!-- Experience 1 -->
-                <div class="relative pl-12 pb-12 timeline-item">
-                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                        <i class="fas fa-briefcase text-white text-sm"></i>
-                    </div>
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-semibold">Senior Software Engineer</h3>
-                                <p class="text-blue-400">TechCorp Inc.</p>
-                            </div>
-                            <div class="text-gray-400 text-sm mt-2 md:mt-0">Jan 2021 - Present</div>
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4">
-                                <img src="https://via.placeholder.com/40" alt="TechCorp" class="rounded-full">
-                            </div>
-                            <p class="text-gray-400 text-sm">
-                                Leading backend and infrastructure initiatives for enterprise SaaS platform.
-                            </p>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-2">
-                            <li>Architected and implemented a distributed event processing system handling 50K+ events/sec</li>
-                            <li>Led migration from monolithic to microservices architecture, reducing deployment times by 70%</li>
-                            <li>Implemented Kubernetes-based CI/CD pipelines reducing production incidents by 60%</li>
-                            <li>Mentored 3 junior developers, improving team velocity by 40%</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Experience 2 -->
-                <div class="relative pl-12 pb-12 timeline-item">
-                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                        <i class="fas fa-briefcase text-white text-sm"></i>
-                    </div>
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-semibold">Software Engineer</h3>
-                                <p class="text-blue-400">DataSystems Ltd.</p>
-                            </div>
-                            <div class="text-gray-400 text-sm mt-2 md:mt-0">Mar 2018 - Dec 2020</div>
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4">
-                                <img src="https://via.placeholder.com/40" alt="DataSystems" class="rounded-full">
-                            </div>
-                            <p class="text-gray-400 text-sm">
-                                Developed data-intensive applications and machine learning pipelines.
-                            </p>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-2">
-                            <li>Built real-time data processing pipelines using Python, Kafka, and Spark</li>
-                            <li>Designed and implemented a computer vision system reducing defect detection time by 90%</li>
-                            <li>Containerized ML models using Docker and deployed with Kubernetes</li>
-                            <li>Automated infrastructure provisioning with Terraform, reducing setup time by 80%</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Experience 3 -->
-                <div class="relative pl-12 timeline-item">
-                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                        <i class="fas fa-briefcase text-white text-sm"></i>
-                    </div>
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-semibold">Junior Developer</h3>
-                                <p class="text-blue-400">StartUp Innovations</p>
-                            </div>
-                            <div class="text-gray-400 text-sm mt-2 md:mt-0">Jun 2016 - Feb 2018</div>
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4">
-                                <img src="https://via.placeholder.com/40" alt="StartUp" class="rounded-full">
-                            </div>
-                            <p class="text-gray-400 text-sm">
-                                Full-stack development with focus on backend systems and APIs.
-                            </p>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-2">
-                            <li>Developed REST APIs and backend services for web applications</li>
-                            <li>Implemented automated testing framework reducing bugs by 50%</li>
-                            <li>Optimized database queries improving response times by 40%</li>
-                            <li>Assisted in migration to cloud infrastructure (AWS)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 section-title inline-block">Work Experience</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Professional journey with a track record of delivering impactful solutions.
+          </p>
         </div>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- Experience 1 -->
+          <div class="relative pl-12 pb-12 timeline-item">
+            <div
+              class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center"
+            >
+              <i class="fas fa-briefcase text-white text-sm"></i>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Senior Software Engineer</h3>
+                  <p class="text-blue-400">TechCorp Inc.</p>
+                </div>
+                <div class="text-gray-400 text-sm mt-2 md:mt-0">Jan 2021 - Present</div>
+              </div>
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4"
+                >
+                  <img src="https://via.placeholder.com/40" alt="TechCorp" class="rounded-full" />
+                </div>
+                <p class="text-gray-400 text-sm">
+                  Leading backend and infrastructure initiatives for enterprise SaaS platform.
+                </p>
+              </div>
+              <ul class="list-disc list-inside text-gray-400 space-y-2">
+                <li>
+                  Architected and implemented a distributed event processing system handling 50K+
+                  events/sec
+                </li>
+                <li>
+                  Led migration from monolithic to microservices architecture, reducing deployment
+                  times by 70%
+                </li>
+                <li>
+                  Implemented Kubernetes-based CI/CD pipelines reducing production incidents by 60%
+                </li>
+                <li>Mentored 3 junior developers, improving team velocity by 40%</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="relative pl-12 pb-12 timeline-item">
+            <div
+              class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center"
+            >
+              <i class="fas fa-briefcase text-white text-sm"></i>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Software Engineer</h3>
+                  <p class="text-blue-400">DataSystems Ltd.</p>
+                </div>
+                <div class="text-gray-400 text-sm mt-2 md:mt-0">Mar 2018 - Dec 2020</div>
+              </div>
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4"
+                >
+                  <img
+                    src="https://via.placeholder.com/40"
+                    alt="DataSystems"
+                    class="rounded-full"
+                  />
+                </div>
+                <p class="text-gray-400 text-sm">
+                  Developed data-intensive applications and machine learning pipelines.
+                </p>
+              </div>
+              <ul class="list-disc list-inside text-gray-400 space-y-2">
+                <li>Built real-time data processing pipelines using Python, Kafka, and Spark</li>
+                <li>
+                  Designed and implemented a computer vision system reducing defect detection time
+                  by 90%
+                </li>
+                <li>Containerized ML models using Docker and deployed with Kubernetes</li>
+                <li>
+                  Automated infrastructure provisioning with Terraform, reducing setup time by 80%
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="relative pl-12 timeline-item">
+            <div
+              class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center"
+            >
+              <i class="fas fa-briefcase text-white text-sm"></i>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 class="text-xl font-semibold">Junior Developer</h3>
+                  <p class="text-blue-400">StartUp Innovations</p>
+                </div>
+                <div class="text-gray-400 text-sm mt-2 md:mt-0">Jun 2016 - Feb 2018</div>
+              </div>
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center mr-4"
+                >
+                  <img src="https://via.placeholder.com/40" alt="StartUp" class="rounded-full" />
+                </div>
+                <p class="text-gray-400 text-sm">
+                  Full-stack development with focus on backend systems and APIs.
+                </p>
+              </div>
+              <ul class="list-disc list-inside text-gray-400 space-y-2">
+                <li>Developed REST APIs and backend services for web applications</li>
+                <li>Implemented automated testing framework reducing bugs by 50%</li>
+                <li>Optimized database queries improving response times by 40%</li>
+                <li>Assisted in migration to cloud infrastructure (AWS)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Blog Section -->
     <section id="blog" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 section-title inline-block">Technical Writing</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Sharing knowledge and insights on backend architecture, DevOps, and machine learning.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
-                        <i class="fas fa-book-open text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-400 mb-3">
-                            <span>Backend Development</span>
-                            <span class="mx-2">•</span>
-                            <span>Jun 2023</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Designing High-Performance APIs in Go</h3>
-                        <p class="text-gray-400 mb-4">
-                            Architectural patterns and optimization techniques for building low-latency APIs.
-                        </p>
-                        <a href="#" class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center">
-                            Read Article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Article 2 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center">
-                        <i class="fas fa-cloud text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-400 mb-3">
-                            <span>DevOps</span>
-                            <span class="mx-2">•</span>
-                            <span>Apr 2023</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Kubernetes Multi-Cluster Management</h3>
-                        <p class="text-gray-400 mb-4">
-                            Strategies for managing multiple Kubernetes clusters with GitOps workflows.
-                        </p>
-                        <a href="#" class="text-purple-500 hover:text-purple-400 text-sm font-medium flex items-center">
-                            Read Article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Article 3 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
-                    <div class="h-48 bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center">
-                        <i class="fas fa-brain text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-400 mb-3">
-                            <span>Deep Learning</span>
-                            <span class="mx-2">•</span>
-                            <span>Feb 2023</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Optimizing PyTorch Models for Production</h3>
-                        <p class="text-gray-400 mb-4">
-                            Techniques for reducing latency and memory usage in deep learning models.
-                        </p>
-                        <a href="#" class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center">
-                            Read Article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300">
-                    <i class="fas fa-book-open mr-2"></i> View All Articles
-                </a>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 section-title inline-block">Technical Writing</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Sharing knowledge and insights on backend architecture, DevOps, and machine learning.
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Article 1 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center"
+            >
+              <i class="fas fa-book-open text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-400 mb-3">
+                <span>Backend Development</span>
+                <span class="mx-2">•</span>
+                <span>Jun 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Designing High-Performance APIs in Go</h3>
+              <p class="text-gray-400 mb-4">
+                Architectural patterns and optimization techniques for building low-latency APIs.
+              </p>
+              <a
+                href="#"
+                class="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center"
+              >
+                Read Article <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center"
+            >
+              <i class="fas fa-cloud text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-400 mb-3">
+                <span>DevOps</span>
+                <span class="mx-2">•</span>
+                <span>Apr 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Kubernetes Multi-Cluster Management</h3>
+              <p class="text-gray-400 mb-4">
+                Strategies for managing multiple Kubernetes clusters with GitOps workflows.
+              </p>
+              <a
+                href="#"
+                class="text-purple-500 hover:text-purple-400 text-sm font-medium flex items-center"
+              >
+                Read Article <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="bg-gray-800 rounded-xl overflow-hidden project-card">
+            <div
+              class="h-48 bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center"
+            >
+              <i class="fas fa-brain text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-400 mb-3">
+                <span>Deep Learning</span>
+                <span class="mx-2">•</span>
+                <span>Feb 2023</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Optimizing PyTorch Models for Production</h3>
+              <p class="text-gray-400 mb-4">
+                Techniques for reducing latency and memory usage in deep learning models.
+              </p>
+              <a
+                href="#"
+                class="text-green-500 hover:text-green-400 text-sm font-medium flex items-center"
+              >
+                Read Article <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center px-6 py-3 border border-gray-700 hover:bg-gray-800 text-white font-medium rounded-lg transition duration-300"
+          >
+            <i class="fas fa-book-open mr-2"></i> View All Articles
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-900/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 section-title inline-block">Get In Touch</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    Interested in collaborating or have questions? Reach out through any of these channels.
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Contact Info -->
-                    <div class="bg-gray-800 rounded-xl p-8">
-                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-300">Email</h4>
-                                    <a href="mailto:contact@developer.com" class="text-blue-500 hover:text-blue-400">contact@developer.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4">
-                                    <i class="fab fa-linkedin-in text-blue-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-300">LinkedIn</h4>
-                                    <a href="https://linkedin.com" target="_blank" class="text-blue-500 hover:text-blue-400">linkedin.com/in/developer</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4">
-                                    <i class="fab fa-github text-blue-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-300">GitHub</h4>
-                                    <a href="https://github.com" target="_blank" class="text-blue-500 hover:text-blue-400">github.com/developer</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-300">Location</h4>
-                                    <p class="text-gray-400">San Francisco, CA</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Form -->
-                    <div class="bg-gray-800 rounded-xl p-8">
-                        <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
-                        
-                        <form class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your name">
-                            </div>
-                            
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="your@email.com">
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
-                                <input type="text" id="subject" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Subject">
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition duration-300">
-                        <i class="fas fa-download mr-2"></i> Download Full CV
-                    </a>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4 section-title inline-block">Get In Touch</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">
+            Interested in collaborating or have questions? Reach out through any of these channels.
+          </p>
         </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Contact Info -->
+            <div class="bg-gray-800 rounded-xl p-8">
+              <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-envelope text-blue-500"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-300">Email</h4>
+                    <a href="mailto:contact@developer.com" class="text-blue-500 hover:text-blue-400"
+                      >contact@developer.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4"
+                  >
+                    <i class="fab fa-linkedin-in text-blue-500"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-300">LinkedIn</h4>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      class="text-blue-500 hover:text-blue-400"
+                      >linkedin.com/in/developer</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4"
+                  >
+                    <i class="fab fa-github text-blue-500"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-300">GitHub</h4>
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      class="text-blue-500 hover:text-blue-400"
+                      >github.com/developer</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-300">Location</h4>
+                    <p class="text-gray-400">San Francisco, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-gray-800 rounded-xl p-8">
+              <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
+
+              <form class="space-y-4">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-300 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label for="subject" class="block text-sm font-medium text-gray-300 mb-1"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Subject"
+                  />
+                </div>
+
+                <div>
+                  <label for="message" class="block text-sm font-medium text-gray-300 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your message"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <a
+              href="#"
+              class="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition duration-300"
+            >
+              <i class="fas fa-download mr-2"></i> Download Full CV
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <span class="text-xl font-bold gradient-text">DEV</span>
-                    <p class="text-gray-400 text-sm mt-1">Senior Software Developer</p>
-                </div>
-                
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-dev text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="mt-8 text-center text-gray-500 text-sm">
-                <p>© 2023 Senior Software Developer. All rights reserved.</p>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <span class="text-xl font-bold gradient-text">DEV</span>
+            <p class="text-gray-400 text-sm mt-1">Senior Software Developer</p>
+          </div>
+
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-dev text-xl"></i>
+            </a>
+          </div>
         </div>
+
+        <div class="mt-8 text-center text-gray-500 text-sm">
+          <p>© 2023 Senior Software Developer. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
+      // Mobile menu toggle
+      document.getElementById('menu-btn').addEventListener('click', function () {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth',
             });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+            }
+          }
         });
-        
-        // Add scroll animation for sections
-        const observerOptions = {
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fadeIn');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+      });
+
+      // Add scroll animation for sections
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fadeIn');
+          }
         });
+      }, observerOptions);
+
+      document.querySelectorAll('section').forEach((section) => {
+        observer.observe(section);
+      });
     </script>
-</body>
+  </body>
 </html>

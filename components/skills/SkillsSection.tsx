@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
-import { FaServer, FaCloud, FaBrain } from 'react-icons/fa';
+import { FaBrain, FaCloud, FaServer } from 'react-icons/fa';
 
 const SkillsSection = () => {
   const backendSkills = [
@@ -38,13 +38,13 @@ const SkillsSection = () => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       className="grid grid-cols-1 md:grid-cols-3 gap-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.div 
+      <motion.div
         className="bg-gray-800 rounded-xl p-5 transition duration-300 hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(59,130,246,0.2)]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -66,15 +66,15 @@ const SkillsSection = () => {
               className={`px-3 py-1 ${skill.color} rounded-full text-sm`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 + (index * 0.05), duration: 0.3 }}
+              transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
             >
               {skill.name}
             </motion.span>
           ))}
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="bg-gray-800 rounded-xl p-5 transition duration-300 hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(147,51,234,0.2)]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -96,15 +96,15 @@ const SkillsSection = () => {
               className={`px-3 py-1 ${skill.color} rounded-full text-sm`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 + (index * 0.05), duration: 0.3 }}
+              transition={{ delay: 0.2 + index * 0.05, duration: 0.3 }}
             >
               {skill.name}
             </motion.span>
           ))}
         </div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="bg-gray-800 rounded-xl p-5 transition duration-300 hover:-translate-y-[5px] hover:shadow-[0_10px_25px_rgba(34,197,94,0.2)]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const SkillsSection = () => {
               className={`px-3 py-1 ${skill.color} rounded-full text-sm`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + (index * 0.05), duration: 0.3 }}
+              transition={{ delay: 0.3 + index * 0.05, duration: 0.3 }}
             >
               {skill.name}
             </motion.span>
@@ -137,4 +137,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection; 
+export default SkillsSection;

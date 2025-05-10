@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "Running pre-commit checks..."
+
+# Run type checking
+npm run type-check
+
+# Run lint-staged (ESLint, Prettier, and other checks)
+npx lint-staged 

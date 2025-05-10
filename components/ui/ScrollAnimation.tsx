@@ -1,7 +1,8 @@
-"use client";
+'use client';
+
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 import { ReactNode, useEffect } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
 import React from 'react';
 
 type AnimationVariant = 'fadeIn' | 'slideUp' | 'slideLeft' | 'slideRight' | 'scale' | 'stagger';
@@ -16,45 +17,31 @@ interface ScrollAnimationProps {
   once?: boolean;
 }
 
-const initialStates = {
-  hidden: { opacity: 0, y: 30 },
-  fadeIn: { opacity: 0, y: 30 },
-  slideUp: { opacity: 0, y: 60 },
-  slideLeft: { opacity: 0, x: 60 },
-  slideRight: { opacity: 0, x: -60 },
-  scale: { opacity: 0, scale: 0.8 },
-  stagger: { opacity: 0, y: 30 }
-};
-
-const variants = {
-  hidden: {
-    opacity: 0,
-    y: 30
-  },
+const animationVariants = {
   fadeIn: {
-    opacity: 1,
-    y: 0
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
   },
   slideUp: {
-    opacity: 1,
-    y: 0
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
   },
   slideLeft: {
-    opacity: 1,
-    x: 0
+    initial: { opacity: 0, x: 60 },
+    animate: { opacity: 1, x: 0 },
   },
   slideRight: {
-    opacity: 1,
-    x: 0
+    initial: { opacity: 0, x: -60 },
+    animate: { opacity: 1, x: 0 },
   },
   scale: {
-    opacity: 1,
-    scale: 1
+    initial: { opacity: 0, scale: 0.8 },
+    animate: { opacity: 1, scale: 1 },
   },
   stagger: {
-    opacity: 1,
-    y: 0
-  }
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+  },
 };
 
 const ScrollAnimation = ({
@@ -64,30 +51,31 @@ const ScrollAnimation = ({
   duration = 0.5,
   className = '',
   threshold = 0.2,
-  once = true
+  once = true,
 }: ScrollAnimationProps) => {
   const controls = useAnimation();
   const ref = React.useRef(null);
   const isInView = useInView(ref, {
     once,
-    amount: threshold
+    amount: threshold,
   });
 
   useEffect(() => {
     if (isInView) {
-      controls.start(variant);
+      controls.start('animate');
     }
-  }, [controls, isInView, variant]);
+  }, [controls, isInView]);
 
   return (
     <motion.div
       ref={ref}
-      initial={initialStates[variant]}
+      initial="initial"
       animate={controls}
+      variants={animationVariants[variant]}
       transition={{
         duration,
         delay,
-        ease: "easeOut"
+        ease: 'easeOut',
       }}
       className={className}
     >
@@ -96,4 +84,4 @@ const ScrollAnimation = ({
   );
 };
 
-export default ScrollAnimation; 
+export default ScrollAnimation;

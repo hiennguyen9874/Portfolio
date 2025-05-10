@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type BlogCardProps = {
   category: string;
@@ -19,7 +19,7 @@ const BlogCard = ({
   description,
   bgColor,
   icon,
-  accentColor
+  accentColor,
 }: BlogCardProps) => {
   const handleReadArticle = () => {
     console.log(`Read article: ${title}`);
@@ -27,9 +27,7 @@ const BlogCard = ({
 
   return (
     <div className="bg-gray-800 rounded-xl overflow-hidden project-card">
-      <div className={`h-48 ${bgColor} flex items-center justify-center`}>
-        {icon}
-      </div>
+      <div className={`h-48 ${bgColor} flex items-center justify-center`}>{icon}</div>
       <div className="p-6">
         <div className="flex items-center text-sm text-gray-400 mb-3">
           <span>{category}</span>
@@ -37,9 +35,7 @@ const BlogCard = ({
           <span>{date}</span>
         </div>
         <h3 className="text-xl font-semibold mb-3">{title}</h3>
-        <p className="text-gray-400 mb-4">
-          {description}
-        </p>
+        <p className="text-gray-400 mb-4">{description}</p>
         <button
           className={`${accentColor} hover:opacity-80 text-sm font-medium flex items-center`}
           onClick={handleReadArticle}
@@ -54,4 +50,4 @@ const BlogCard = ({
   );
 };
 
-export default BlogCard; 
+export default BlogCard;

@@ -1,7 +1,9 @@
-"use client";
+'use client';
+
+import { motion } from 'framer-motion';
 
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+
 import ScrollAnimation from './ScrollAnimation';
 
 interface StaggerContainerProps {
@@ -17,7 +19,7 @@ const StaggerContainer = ({
   className = '',
   staggerDelay = 0.1,
   containerDelay = 0,
-  containerVariant = 'fadeIn'
+  containerVariant = 'fadeIn',
 }: StaggerContainerProps) => {
   const container = {
     hidden: { opacity: 0 },
@@ -25,27 +27,18 @@ const StaggerContainer = ({
       opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
-        delayChildren: containerDelay
-      }
-    }
+        delayChildren: containerDelay,
+      },
+    },
   };
 
   return (
-    <ScrollAnimation
-      variant={containerVariant}
-      className={className}
-      delay={containerDelay}
-    >
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="w-full"
-      >
+    <ScrollAnimation variant={containerVariant} className={className} delay={containerDelay}>
+      <motion.div variants={container} initial="hidden" animate="show" className="w-full">
         {children}
       </motion.div>
     </ScrollAnimation>
   );
 };
 
-export default StaggerContainer; 
+export default StaggerContainer;

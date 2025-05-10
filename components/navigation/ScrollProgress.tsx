@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion, useScroll } from 'framer-motion';
 
@@ -13,4 +13,4 @@ const ScrollProgress = () => {
   );
 };
 
-export default ScrollProgress; 
+export default ScrollProgress;

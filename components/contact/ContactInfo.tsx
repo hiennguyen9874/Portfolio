@@ -16,10 +16,10 @@ const ContactItem = ({ icon, title, value, link }: ContactItemProps) => {
       <div>
         <h4 className="font-medium text-gray-300">{title}</h4>
         {link ? (
-          <a 
-            href={link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-400"
             tabIndex={0}
             aria-label={`Contact via ${title}: ${value}`}
@@ -40,25 +40,25 @@ const ContactInfo = () => {
       icon: <i className="fas fa-envelope text-blue-500"></i>,
       title: 'Email',
       value: 'contact@developer.com',
-      link: 'mailto:contact@developer.com'
+      link: 'mailto:contact@developer.com',
     },
     {
       icon: <i className="fab fa-linkedin-in text-blue-500"></i>,
       title: 'LinkedIn',
       value: 'linkedin.com/in/developer',
-      link: 'https://linkedin.com/in/developer'
+      link: 'https://linkedin.com/in/developer',
     },
     {
       icon: <i className="fab fa-github text-blue-500"></i>,
       title: 'GitHub',
       value: 'github.com/developer',
-      link: 'https://github.com/developer'
+      link: 'https://github.com/developer',
     },
     {
       icon: <i className="fas fa-map-marker-alt text-blue-500"></i>,
       title: 'Location',
-      value: 'San Francisco, CA'
-    }
+      value: 'San Francisco, CA',
+    },
   ];
 
   return (
@@ -79,4 +79,4 @@ const ContactInfo = () => {
   );
 };
 
-export default ContactInfo; 
+export default ContactInfo;

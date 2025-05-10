@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
+import ContactInfo from './ContactInfo';
 
 const ContactSection = () => {
   const handleDownloadCV = () => {
@@ -17,9 +17,9 @@ const ContactSection = () => {
             <ContactInfo />
             <ContactForm />
           </div>
-          
+
           <div className="text-center mt-12">
-            <button 
+            <button
               className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition duration-300"
               onClick={handleDownloadCV}
               tabIndex={0}
@@ -35,4 +35,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection; 
+export default ContactSection;

@@ -7,13 +7,13 @@ type ExperienceItemProps = {
   isLast?: boolean;
 };
 
-const ExperienceItem = ({ 
-  title, 
-  company, 
-  period, 
-  description, 
+const ExperienceItem = ({
+  title,
+  company,
+  period,
+  description,
   achievements,
-  isLast = false
+  isLast = false,
 }: ExperienceItemProps) => {
   return (
     <div className={`relative pl-12 ${isLast ? '' : 'pb-12'} timeline-item`}>
@@ -34,9 +34,7 @@ const ExperienceItem = ({
               <i className="fas fa-building text-gray-500"></i>
             </div>
           </div>
-          <p className="text-gray-400 text-sm">
-            {description}
-          </p>
+          <p className="text-gray-400 text-sm">{description}</p>
         </div>
         <ul className="list-disc list-inside text-gray-400 space-y-2">
           {achievements.map((achievement, index) => (
@@ -48,4 +46,4 @@ const ExperienceItem = ({
   );
 };
 
-export default ExperienceItem; 
+export default ExperienceItem;

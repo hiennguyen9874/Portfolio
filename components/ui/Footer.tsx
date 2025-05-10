@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com' },
     { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com' },
@@ -18,12 +18,12 @@ const Footer = () => {
             <span className="text-xl font-bold gradient-text">DEV</span>
             <p className="text-gray-400 text-sm mt-1">Senior Software Developer</p>
           </div>
-          
+
           <div className="flex space-x-6">
             {socialLinks.map((link) => (
-              <a 
+              <a
                 key={link.name}
-                href={link.url} 
+                href={link.url}
                 className="text-gray-400 hover:text-white transition"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="mt-8 text-center text-gray-500 text-sm">
           <p>© {currentYear} Senior Software Developer. All rights reserved.</p>
         </div>
@@ -44,4 +44,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

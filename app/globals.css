@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import url('tailwindcss');
 
 :root {
   --primary: #3b82f6;
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   background-color: var(--dark);
   color: var(--light);
   scroll-behavior: smooth;
@@ -17,7 +17,6 @@ body {
 
 .gradient-text {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -28,7 +27,7 @@ body {
 
 .skill-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 25px rgb(59 130 246 / 20%);
 }
 
 .project-card {
@@ -37,7 +36,7 @@ body {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 25px rgb(59 130 246 / 20%);
 }
 
 .timeline-item:not(:last-child)::after {
@@ -55,9 +54,17 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .section-title::after {
