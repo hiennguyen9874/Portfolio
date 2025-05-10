@@ -1,22 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
 echo "🔍 Running pre-commit checks..."
 
 # Run type checking
 echo "Running type check..."
-npm run type-check || {
+/usr/bin/npm run type-check || {
     echo "❌ Type check failed. Please fix type errors before committing."
     exit 1
 }
 
 # Run ESLint specifically for unused imports
 echo "Checking for unused imports..."
-npm run lint || {
+/usr/bin/npm run lint || {
     echo "❌ Linting failed. Please fix linting errors before committing."
     exit 1
 }
 
 # Run lint-staged (Prettier and other checks)
 echo "Running lint-staged..."
-npx lint-staged || {
+/usr/bin/npx lint-staged || {
     echo "❌ Lint-staged checks failed. Please fix the issues before committing."
     exit 1
 }
