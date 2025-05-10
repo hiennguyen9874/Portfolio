@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Script from 'next/script';
 
+import { personalInfo } from '@/config/personal-info';
+
 const HeroSection = () => {
   return (
     <>
@@ -13,23 +15,16 @@ const HeroSection = () => {
           {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Your Name",
-            "jobTitle": "Senior Software Developer",
-            "description": "Senior Software Developer specializing in Backend Development, DevOps Automation, and Deep Learning solutions",
-            "url": "https://your-domain.com",
+            "name": "${personalInfo.name}",
+            "jobTitle": "${personalInfo.title}",
+            "description": "${personalInfo.description}",
+            "url": "${personalInfo.website.url}",
             "sameAs": [
-              "https://github.com/yourusername",
-              "https://linkedin.com/in/yourusername",
-              "https://twitter.com/yourusername"
+              "${personalInfo.contact.social.github.url}",
+              "${personalInfo.contact.social.linkedin.url}",
+              "${personalInfo.contact.social.twitter.url}"
             ],
-            "knowsAbout": [
-              "Backend Development",
-              "DevOps",
-              "Deep Learning",
-              "Python",
-              "Go",
-              "Cloud Computing"
-            ]
+            "knowsAbout": ${JSON.stringify(personalInfo.skills)}
           }
         `}
       </Script>
@@ -53,7 +48,12 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <span className="gradient-text">Senior Software Developer</span>
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text font-extrabold tracking-tight mb-2 block text-5xl md:text-7xl">
+                  {personalInfo.name}
+                </span>
+                <span className="gradient-text text-3xl md:text-5xl font-semibold">
+                  {personalInfo.title}
+                </span>
               </motion.h1>
               <motion.p
                 className="text-xl text-gray-300 mb-8 max-w-lg"
@@ -61,8 +61,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Architecting scalable backend systems, automating infrastructure, and implementing
-                deep learning solutions to solve complex problems.
+                {personalInfo.description}
               </motion.p>
               <motion.div
                 className="flex flex-wrap gap-4"

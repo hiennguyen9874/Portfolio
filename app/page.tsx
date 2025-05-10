@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import BlogSection from '@/components/blog/BlogSection';
 import ContactSection from '@/components/contact/ContactSection';
+import EducationSection from '@/components/education/EducationSection';
 import ExperienceSection from '@/components/experience/ExperienceSection';
 import HeroSection from '@/components/home/HeroSection';
 import Navbar from '@/components/navigation/Navbar';
@@ -59,6 +60,32 @@ export default function Home() {
               </p>
             </motion.div>
             <SkillsSection />
+          </div>
+        </motion.section>
+
+        {/* Education Section */}
+        <motion.section
+          id="education"
+          className="py-16 relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold mb-4 section-title inline-block">Education</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Academic background and qualifications in computer science and engineering.
+              </p>
+            </motion.div>
+            <EducationSection />
           </div>
         </motion.section>
 

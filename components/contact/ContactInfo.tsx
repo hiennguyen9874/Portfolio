@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { personalInfo } from '@/config/personal-info';
+
 type ContactItemProps = {
   icon: ReactNode;
   title: string;
@@ -39,25 +41,25 @@ const ContactInfo = () => {
     {
       icon: <i className="fas fa-envelope text-blue-500"></i>,
       title: 'Email',
-      value: 'contact@developer.com',
-      link: 'mailto:contact@developer.com',
+      value: personalInfo.contact.email,
+      link: `mailto:${personalInfo.contact.email}`,
     },
     {
       icon: <i className="fab fa-linkedin-in text-blue-500"></i>,
       title: 'LinkedIn',
-      value: 'linkedin.com/in/developer',
-      link: 'https://linkedin.com/in/developer',
+      value: personalInfo.contact.social.linkedin.username,
+      link: personalInfo.contact.social.linkedin.url,
     },
     {
       icon: <i className="fab fa-github text-blue-500"></i>,
       title: 'GitHub',
-      value: 'github.com/developer',
-      link: 'https://github.com/developer',
+      value: personalInfo.contact.social.github.username,
+      link: personalInfo.contact.social.github.url,
     },
     {
       icon: <i className="fas fa-map-marker-alt text-blue-500"></i>,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: personalInfo.contact.location,
     },
   ];
 

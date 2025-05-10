@@ -2,20 +2,15 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
 import ScrollProgress from '@/components/navigation/ScrollProgress';
+import { personalInfo } from '@/config/personal-info';
 
 import './globals.css';
+import { inter } from './lib/fonts';
 
 config.autoAddCss = false;
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-  preload: true,
-});
 
 export const viewport: Viewport = {
   themeColor: '#000000',
@@ -25,7 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL(`https://${personalInfo.domain}`),
   title: {
     default: 'Senior Software Developer | Backend, DevOps & Deep Learning',
     template: '%s | Senior Software Developer Portfolio',
@@ -59,14 +54,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-domain.com',
+    url: `https://${personalInfo.domain}`,
     siteName: 'Senior Software Developer Portfolio',
     title: 'Senior Software Developer | Backend, DevOps & Deep Learning',
     description:
       'Portfolio of a Senior Software Developer specializing in Backend Development, DevOps Automation, and Deep Learning solutions.',
     images: [
       {
-        url: 'https://your-domain.com/og-image.jpg',
+        url: `https://${personalInfo.domain}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: 'Senior Software Developer Portfolio',
@@ -79,13 +74,13 @@ export const metadata: Metadata = {
     description:
       'Portfolio of a Senior Software Developer specializing in Backend Development, DevOps Automation, and Deep Learning solutions.',
     creator: '@yourtwitter',
-    images: ['https://your-domain.com/twitter-image.jpg'],
+    images: [`https://${personalInfo.domain}/twitter-image.jpg`],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   alternates: {
-    canonical: 'https://your-domain.com',
+    canonical: `https://${personalInfo.domain}`,
   },
 };
 
@@ -103,6 +98,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>

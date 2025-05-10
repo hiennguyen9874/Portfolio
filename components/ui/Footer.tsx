@@ -1,13 +1,14 @@
 'use client';
 
+import { personalInfo } from '@/config/personal-info';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com' },
-    { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com' },
-    { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://twitter.com' },
-    { name: 'Dev', icon: 'fab fa-dev', url: 'https://dev.to' },
+    { name: 'GitHub', icon: 'fab fa-github', url: personalInfo.contact.social.github.url },
+    { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: personalInfo.contact.social.linkedin.url },
+    { name: 'Twitter', icon: 'fab fa-twitter', url: personalInfo.contact.social.twitter.url },
   ];
 
   return (
@@ -16,7 +17,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <span className="text-xl font-bold gradient-text">DEV</span>
-            <p className="text-gray-400 text-sm mt-1">Senior Software Developer</p>
+            <p className="text-gray-400 text-sm mt-1">{personalInfo.title}</p>
           </div>
 
           <div className="flex space-x-6">
@@ -37,7 +38,9 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>© {currentYear} Senior Software Developer. All rights reserved.</p>
+          <p>
+            © {currentYear} {personalInfo.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
