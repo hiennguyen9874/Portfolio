@@ -2,9 +2,9 @@ name: Code Quality
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   code-quality:
@@ -38,4 +38,4 @@ jobs:
       - name: Commit message lint
         uses: wagoid/commitlint-github-action@v5
         with:
-          configFile: commitlint.config.js 
+          configFile: commitlint.config.js
